@@ -13,5 +13,15 @@
     "default_popup": "index.html",
     "default_title": "Generate christmas gift idea"
   },
-  "permissions": ["contextMenus", "tabs", "storage"]
+  "background": {
+    "service_worker": "scripts/contextMenuServiceWorker.js"
+  },
+  "permissions": ["contextMenus", "tabs", "storage"],
+  "host_permissions": ["https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/content.js"]
+    }
+  ]
 }
